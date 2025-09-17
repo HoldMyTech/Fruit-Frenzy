@@ -1,16 +1,25 @@
-    using UnityEngine;
-    using UnityEngine.SceneManagement; // Important!
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
-    public class SceneChanger : MonoBehaviour
+public class SceneAdvance : MonoBehaviour
+{
+    public string nextSceneName;
+    public AudioSource clickSound;
+
+    public void LoadNextScene()
     {
-        public void LoadSpecificScene(string sceneName)
+        StartCoroutine(PlaySoundThenLoad());
+    }
+
+    private IEnumerator PlaySoundThenLoad()
+    {
+        if (clickSound != null && clickSound.clip != null)
         {
-            SceneManager.LoadScene(sceneName);
+            clickSound.Play();
+            yield return new WaitForSeconds(clickSound.clip.length);
         }
 
-        public void LoadNextScene()
-        {
-            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(currentSceneIndex + 1);
-        }
+        SceneManager.LoadScene(nextSceneName);
     }
+}
