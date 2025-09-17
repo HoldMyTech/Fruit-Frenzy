@@ -4,23 +4,28 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float jumpForce = 5f; 
+
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb; 
+    private bool isGrounded = true; // Simple ground check flag
 
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>(); 
+        rb = GetComponent<Rigidbody2D>();
+
+        // Prevent unwanted rotations
+        rb.freezeRotation = true;
     }
 
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
 
-        // Move the player
-        transform.Translate(Vector3.right * horizontalInput * moveSpeed * Time.deltaTime);
+        // Set horizontal velocity
+        rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, rb.linearVelocity.y);
 
-        // Flip the sprite based on movement direction
+        // Flip sprite
         if (horizontalInput > 0)
         {
             spriteRenderer.flipX = false; // Facing right
@@ -30,10 +35,20 @@ public class PlayerMovement : MonoBehaviour
             spriteRenderer.flipX = true; // Facing left
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        // Jump (only if grounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            // Apply an upward force to the Rigidbody2D
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            isGrounded = false; // Prevent double-jumping
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        // When hitting the ground, reset jump ability
+        if (collision.contacts[0].normal.y > 0.5f) // Rough check for "landing" on top
+        {
+            isGrounded = true;
         }
     }
 }
