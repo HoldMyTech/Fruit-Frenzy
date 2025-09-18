@@ -3,11 +3,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float jumpForce = 5f; 
+    public float jumpForce = 5f;
 
     private SpriteRenderer spriteRenderer;
-    private Rigidbody2D rb; 
+    private Rigidbody2D rb;
     private bool isGrounded = true; // Simple ground check flag
+    public AudioClip SoundEffect;
+    public AudioSource AS;
 
     void Awake()
     {
@@ -45,10 +47,17 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // When hitting the ground, reset jump ability
-        if (collision.contacts[0].normal.y > 0.5f) // Rough check for "landing" on top
+        if (collision.contacts[0].normal.y > 0.5f)
         {
             isGrounded = true;
+        }
+
+        if (collision.gameObject.CompareTag("Fruit"))
+        {
+            Debug.Log("Fruit collected! Playing sound.");
+            GameManager.instance.AddScore(1);
+            AS.PlayOneShot(SoundEffect);  // plays from player’s AudioSource
+            Destroy(collision.gameObject); // safe to destroy fruit
         }
     }
 }
