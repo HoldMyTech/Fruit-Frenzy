@@ -221,7 +221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1979886642}
   - component: {fileID: 1979886641}
-  - component: {fileID: 1979886640}
+  - component: {fileID: 1979886643}
   m_Layer: 0
   m_Name: End Screen
   m_TagString: Untagged
@@ -229,19 +229,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1979886640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1979886639}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e2ada0516f2681408de4a7f786017ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AS: {fileID: 0}
 --- !u!212 &1979886641
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -286,8 +273,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8619175987092441086, guid: 97e9a1a9bd8d3f64d80ca0502b9048e9, type: 3}
-  m_Color: {r: 1, g: 0.41320753, b: 0.41320753, a: 1}
+  m_Sprite: {fileID: -9138896846135073407, guid: 9bc612428defe4441a8f66b039615210, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -312,6 +299,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1979886643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979886639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be54f26ee0ef05449f8578b32a572f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AS: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

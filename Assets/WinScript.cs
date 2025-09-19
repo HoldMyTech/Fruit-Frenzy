@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class TitleScript : MonoBehaviour
+public class WinScript : MonoBehaviour
 {
     //public AudioClip SoundEffect4;
     public AudioSource AS;
