@@ -9,7 +9,11 @@ public class GameManager : MonoBehaviour
     public float gameDuration = 30f; // 30 seconds
     private float timer;
     private int score;
-
+    
+    [Header("Scenes")]
+    public string winSceneName = "WinScreen";
+    public string loseSceneName = "LoseScreen";
+    public int targetScore = 10; // minimum score to avoid losing
     private void Awake()
     {
         if (instance == null)
@@ -44,10 +48,19 @@ public class GameManager : MonoBehaviour
     {
         scoreText.text = "Score: " + score;
     }
-
-    void EndGame()
-    {
-        // Load your end screen scene
-        SceneManager.LoadScene("EndScreen");
-    }
+    
+        void EndGame()
+        {
+            if (score < targetScore)
+            {
+                // Player did not reach enough points → Lose
+                SceneManager.LoadScene(loseSceneName);
+            }
+            else
+            {
+                // Player reached target score or higher → Win
+                SceneManager.LoadScene(winSceneName);
+            }
+        }
+    
 }

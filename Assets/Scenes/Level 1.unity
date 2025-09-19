@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 72300170}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -366,6 +366,7 @@ MonoBehaviour:
   - {fileID: 1490250340511905292, guid: 635080f3e37e28344b0f864de093b2c3, type: 3}
   - {fileID: 5204097486140660862, guid: 058673d7668f0dc42bfe5dc841022e3f, type: 3}
   - {fileID: 2723934547442482530, guid: d8814346e15641042adddfc180daa8f3, type: 3}
+  - {fileID: 4784358636275670034, guid: a02533e2e02478549b34336b610cbcb0, type: 3}
   spawnInterval: 1.5
   xRange: 8
   ySpawn: 6
@@ -1085,6 +1086,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 334427110}
   gameDuration: 30
+  winSceneName: WinScreen
+  loseSceneName: LoseScreen
+  targetScore: 10
 --- !u!4 &2043843617
 Transform:
   m_ObjectHideFlags: 0
