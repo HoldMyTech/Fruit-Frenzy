@@ -59,5 +59,12 @@ public class PlayerMovement : MonoBehaviour
             AS.PlayOneShot(SoundEffect);  // plays from player’s AudioSource
             Destroy(collision.gameObject); // safe to destroy fruit
         }
+        else if (collision.gameObject.CompareTag("GoldFruit"))
+        {
+            Debug.Log("Gold fruit collected! Playing sound.");
+            GameManager.instance.AddScore(3);
+            AS.PlayOneShot(SoundEffect);
+            Destroy(collision.gameObject);
+        }        
     }
 }

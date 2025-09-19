@@ -10,4 +10,12 @@ public class Fruit : MonoBehaviour
             Destroy(gameObject); // remove fruit after collecting
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            Destroy(gameObject); // fruit despawns when hitting floor
+        }
+    }
 }
